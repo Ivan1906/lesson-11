@@ -1,10 +1,17 @@
-const argv = require('yargs').argv;
-
+const yargs = require('yargs');
 const { config } = require('dotenv');
+const { getLatLngForAddress } = require('./src/GeocodingAPI');
+const { getWeatherForLatLng } = require('./src/DarkSkyAPI');
+
 config();
+const { city = '' } = yargs.argv;
 
-const PORT = process.env.PORT || 3000;
+async function weather() {
+    const { lat, lng } = await getLatLngForAddress(city);
+    const arrayWeather = await getWeatherForLatLng(lat, lng);
+    return arrayWeather;
+};
 
-console.log("ivan");
-
-console.log(argv.city);
+weather()
+    .then(arrayWeather => console.log(arrayWeather))
+    .catch(error => console.log(error));

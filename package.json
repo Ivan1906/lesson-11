@@ -6,16 +6,14 @@
   "author": "Ivan1906 <yanik.ivan@ukr.net>",
   "license": "MIT",
   "scripts": {
-    "babel-node": "babel-node --presets=env --ignore='node_modules'",
-    "start": "nodemon --exec yarn babel-node -- get-weather.js"
+    "start": "nodemon get-weather.js"
   },
   "dependencies": {
     "dotenv": "^5.0.1",
+    "request": "^2.85.0",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
     "nodemon": "^1.17.3"
   }
 }
