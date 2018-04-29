@@ -1,4 +1,5 @@
 const request = require('request');
+const { strMessage } = require('./values');
 
 const getLatLngForAddress = (address) => {
 
@@ -17,7 +18,7 @@ const getLatLngForAddress = (address) => {
 
             let strErr = error ? error : 
                 body.status === 'ZERO_RESULTS' 
-                    ? 'The city name was entered incorrectly' : '';
+                    ? strMessage.zeroResult : '';
             
             return body.status !== 'ZERO_RESULTS' 
                         ? resolve(body.results[0].geometry.location) 

@@ -1,1 +1,1 @@
-The city name was entered incorrectly
+City not found, Google Maps Geocoding API result zero
