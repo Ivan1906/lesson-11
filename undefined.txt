@@ -1,0 +1,1 @@
+Not specified --city = 'NameCity' parameter

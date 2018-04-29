@@ -1,17 +1,31 @@
 const yargs = require('yargs');
 const { config } = require('dotenv');
+
 const { getLatLngForAddress } = require('./src/GeocodingAPI');
 const { getWeatherForLatLng } = require('./src/DarkSkyAPI');
+const { printInFile } = require('./src/PrintInFiles');
+const { nameFilesForWrite, strMessage } = require('./src/values');
 
 config();
-const { city = '' } = yargs.argv;
+const { city } = yargs.argv;
 
-async function weather() {
-    const { lat, lng } = await getLatLngForAddress(city);
-    const arrayWeather = await getWeatherForLatLng(lat, lng);
-    return arrayWeather;
-};
+if (city !== undefined) {
+    async function weather() {
+        const { lat, lng } = await getLatLngForAddress(city);
+        const weatherCity = await getWeatherForLatLng(lat, lng);
+        return weatherCity;
+    };
 
-weather()
-    .then(arrayWeather => console.log(arrayWeather))
-    .catch(error => console.log(error));
+    weather()
+        .then(weatherCity => {
+            console.log(strMessage.success);
+            printInFile(weatherCity, undefined, nameFilesForWrite.success)
+        })
+        .catch(error => {
+            console.log(strMessage.error);
+            printInFile(undefined, error, nameFilesForWrite.error);
+        });
+} else {
+    console.log(strMessage.error);
+    printInFile(undefined, strMessage.notParam, nameFilesForWrite.error);
+}

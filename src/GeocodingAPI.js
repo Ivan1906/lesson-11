@@ -13,9 +13,16 @@ const getLatLngForAddress = (address) => {
     };
     
     return new Promise((resolve, reject) => {
-        request(options, (error, response, body) => !error 
-            ? resolve(body.results[0].geometry.location) 
-            : reject(error)
+        request(options, (error, response, body) => {
+
+            let strErr = error ? error : 
+                body.status === 'ZERO_RESULTS' 
+                    ? 'The city name was entered incorrectly' : '';
+            
+            return body.status !== 'ZERO_RESULTS' 
+                        ? resolve(body.results[0].geometry.location) 
+                        : reject(strErr)
+        }
         );
     });
 };

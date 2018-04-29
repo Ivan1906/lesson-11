@@ -1,0 +1,16 @@
+time — 1525004875
+summary — Невелика Хмарність
+icon — partly-cloudy-day
+precipIntensity — 0
+precipProbability — 0
+temperature — 25.99
+apparentTemperature — 25.99
+dewPoint — 10.96
+humidity — 0.39
+pressure — 1015.44
+windSpeed — 3.94
+windGust — 4.55
+windBearing — 174
+cloudCover — 0.56
+uvIndex — 3
+ozone — 329.28

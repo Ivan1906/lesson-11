@@ -1,0 +1,17 @@
+time — 1525010220
+summary — Хмарно
+icon — partly-cloudy-day
+precipIntensity — 0.0965
+precipProbability — 0.02
+precipType — rain
+temperature — 25.49
+apparentTemperature — 25.49
+dewPoint — 11.4
+humidity — 0.41
+pressure — 1014.82
+windSpeed — 4.18
+windGust — 5.16
+windBearing — 167
+cloudCover — 0.67
+uvIndex — 1
+ozone — 328.47

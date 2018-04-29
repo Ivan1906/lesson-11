@@ -7,16 +7,17 @@ const getWeatherForLatLng = (lat, lng) => {
         json: true,
         url: `https://api.darksky.net/forecast/${process.env.DARKSKY_KEY}/${lat},${lng}`,
         qs: {
-            exclude: 'currently',
+            exclude: 'hourly,daily,flags',
             lang: 'uk',
             units: 'si',
         }
     };
 
     return new Promise((resolve, reject) => {
-        request(options, (error, response, body) => {
-            console.log(body);
-        });
+        request(options, (error, response, body) => !error 
+            ? resolve(body.currently) 
+            : reject(error)
+        );
     });
 };
 
